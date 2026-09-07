@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+@import './original.css';
+:root {
+  --background: #0b0b0b;
+  --foreground: #fff;
+  --primary: #e9bd60;
+  --primary-foreground: #111;
+  --border: #36332b;
+  --ring: #e9bd60;
+  --radius: 0.75rem;
+  --popover: #141414;
+  --popover-foreground: #fff;
+}
+:focus-visible {
+  outline: 2px solid #e9bd60;
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
