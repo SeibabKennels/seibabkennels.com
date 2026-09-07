@@ -1,5 +1,23 @@
 import { env } from 'cloudflare:workers';
-export const db = () => env.DB;
+// Return the Cloudflare binding for the D1 database.
+// If the binding is not configured (e.g. in preview) return a safe stub
+// so attempting to call `.prepare(...)` doesn't throw `Cannot read properties of undefined`.
+export const db = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const maybe = (env as any).DB;
+  if (maybe) return maybe;
+
+  // Minimal stub that mirrors the D1 API surface used in this project.
+  const noop = async () => undefined;
+  const prepared = () => ({
+    bind: () => ({
+      first: noop,
+      all: async () => ({ results: [] }),
+      run: noop,
+    }),
+  });
+  return { prepare: prepared } as unknown as typeof maybe;
+};
 export const files = () => env.FILES;
 export const config = () => env as unknown as Record<string, string>;
 export const json = (data: unknown, status = 200) =>
