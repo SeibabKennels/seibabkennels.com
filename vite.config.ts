@@ -14,23 +14,23 @@ const localBindingConfig = {
   main: 'vinext/server/fetch-handler',
   compatibility_flags: ['nodejs_compat'],
   d1_databases: d1
-  ? [
-      {
-        binding: d1,
-        database_name: 'seibab-kennels',
-        database_id: '63ece939-860b-4bab-9e19-a15c60d92a06',
-      },
-    ]
-  : [],
-    
-  r2_buckets: 
-     [
+    ? [
         {
-          binding: 'FILES',
+          binding: d1,
+          database_name: 'seibab-kennels',
+          database_id: '63ece939-860b-4bab-9e19-a15c60d92a06',
+        },
+      ]
+    : [],
+
+  r2_buckets: r2
+    ? [
+        {
+          binding: r2,
           bucket_name: 'seibab-kennels-files',
         },
       ]
-    
+    : [],
 };
 
 export default defineConfig(async () => {
