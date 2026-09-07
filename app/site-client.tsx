@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Site from './recovered-site';
+import Site from './site';
 import Login from './admin-login';
 import { ye } from './data-client';
 import { setContent } from './content-store';
