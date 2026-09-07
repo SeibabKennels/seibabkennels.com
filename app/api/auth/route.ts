@@ -21,7 +21,9 @@ export async function POST(req: Request) {
       );
     const { username } = (await req.json()) as any;
     // Allow only the single admin username. Passwords are not required.
-    if (username !== 'Mr.Duhoki')
+    if (typeof username !== 'string') return json({ error: 'Incorrect username.' }, 401);
+    const normalized = username.trim().toLowerCase();
+    if (!(normalized === 'mr.duhoki' || normalized === 'mrduhoki'))
       return json({ error: 'Incorrect username.' }, 401);
     const token =
       crypto.randomUUID().replaceAll('-', '') +
