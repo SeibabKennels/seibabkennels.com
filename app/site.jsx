@@ -1891,7 +1891,7 @@ const GE = 'https://www.instagram.com/seibab_kennels/',
                     f.jsxs('p', {
                       children: [
                         f.jsx('strong', { children: 'Email:' }),
-                        ' info@seibabkennel.com',
+                        ' seibabkennels@gmail.com',
                       ],
                     }),
                   ],
@@ -3968,7 +3968,7 @@ Seibab Kennel`;
           children: [
             f.jsx('p', { children: 'Seibab Kennel Inc. © 2023' }),
             f.jsx('p', {
-              children: 'Phone: (972) 330-3392 | Email: info@seibabkennel.com',
+              children: 'Phone: (972) 330-3392 | Email: seibabkennels@gmail.com',
             }),
           ],
         }),
